@@ -2,6 +2,10 @@
 # This stack represents a VPC managed by platform admins.
 # It doesn't actually provision infrastructure.
 
+variable "prefix" {
+  type = string
+}
+
 variable "account_id" {
   description = "Cloud provider account ID"
   type        = string
@@ -34,6 +38,18 @@ component "vpc" {
   inputs = {
     account_id = var.account_id
     region = var.region
+  }
+
+  providers = {
+    random = provider.random.this
+  }
+}
+
+component "pet" {
+  source = "git::https://github.com/ker-an/pet-module.git"
+
+  inputs = {
+    prefix = var.prefix
   }
 
   providers = {

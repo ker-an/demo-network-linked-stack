@@ -1,5 +1,6 @@
 deployment "staging" {
   inputs = {
+    prefix     = "staging"
     account_id = "89012"
     region     = "us-west-1"
   }
@@ -7,6 +8,7 @@ deployment "staging" {
 
 deployment "prod" {
   inputs = {
+    prefix     = "prod"
     account_id = "21098"
     region     = "us-east-1"
   }
